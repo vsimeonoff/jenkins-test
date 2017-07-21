@@ -4,12 +4,12 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh 'gradle test'
+                sh './gradlew test'
             }
         }
         stage('Build'){
             steps {
-                sh 'gradle build'
+                sh './gradlew build'
             }
         }
         stage('Deploy') {
