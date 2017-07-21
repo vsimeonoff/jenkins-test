@@ -1,4 +1,7 @@
 node {
+    stage ('Prepare') {
+        checkout scm
+    }
     stage('Main stage') {
         stage('Test') {
             sh './gradlew test'
