@@ -1,6 +1,5 @@
 node {
-
-    stages {
+    stage ('Main stage') {
         stage('Test') {
             steps {
                 sh './gradlew test'
