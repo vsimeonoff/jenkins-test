@@ -1,4 +1,4 @@
-node('docker') {
+node {
 
     stages {
         stage('Test') {
@@ -6,7 +6,7 @@ node('docker') {
                 sh './gradlew test'
             }
         }
-        stage('Build') {
+        stage('Build'){
             steps {
                 sh './gradlew build'
             }
