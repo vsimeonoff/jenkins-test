@@ -12,9 +12,14 @@ pipeline {
                 sh './gradlew build'
             }
         }
-        stage('Deploy') {
+        stage('Build docker image') {
             steps {
-                sh 'echo Deploy stage'
+                sh './gradlew buildDocker'
+            }
+        }
+        stage('Deploy docker image') {
+            steps {
+                sh 'echo Deploy docker image'
             }
         }
     }
