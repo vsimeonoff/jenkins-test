@@ -3,11 +3,14 @@ node {
         checkout scm
     }
     stage('Main stage') {
-        stage('Test') {
-            sh './gradlew test'
+        stage('Who am i') {
+            sh 'whoami'
         }
         stage('Build') {
             sh './gradlew build'
+        }
+        stage('Test') {
+            sh './gradlew test'
         }
         stage('Build docker image') {
             sh './gradlew buildDocker'
