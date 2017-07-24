@@ -3,8 +3,8 @@ node {
         checkout scm
     }
     stage('Main stage') {
-        stage('Who am i') {
-            sh 'whoami'
+        stage('Get groups') {
+            sh 'groups $(whoami)'
         }
         stage('Build') {
             sh './gradlew build'
