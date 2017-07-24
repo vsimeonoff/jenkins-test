@@ -1,4 +1,4 @@
-node("docker-enabled") {
+node("docker") {
     stage ('Prepare') {
         checkout scm
     }
