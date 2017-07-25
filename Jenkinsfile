@@ -1,3 +1,10 @@
+def deployTo(targetProject, version) {
+    deployEnv = ['MY_BUILD_VERSION=' + version, 'TARGET_PROJECT=' + targetProject]
+    withEnv(deployEnv) {
+        sh 'echo deploying int'
+    }
+}
+
 node {
     stage ('Prepare') {
         checkout scm
@@ -6,11 +13,19 @@ node {
         stage('Build') {
             sh './gradlew build'
         }
-        stage('Build docker image') {
-            sh './gradlew buildDocker'
+
+        stage('Test') {
+            sh './gradlew test'
         }
-        stage('Deploy docker image') {
-            sh 'echo Deploy docker image'
-        }
+    }
+}
+
+stage('ask deploy') {
+    input 'Deploy int?'
+}
+
+node {
+    stage('deployment int') {
+        deployTo('int', 1)
     }
 }
